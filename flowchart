@@ -1,0 +1,59 @@
+Start
+  |
+  V
+Initialize System Components
+  |
+  V
+Connect to Wi-Fi
+  |
+  V
+Create FreeRTOS Tasks
+  |
+  V
+[Sensor Task] ---> Read Sensor Data (MPU6050 & Vibration Sensor)
+  |                             |
+  |                             V
+  |                      Send Data to Sensor Queue
+  |                             |
+  |                             V
+  |                      [Accident Detection Task] <---+
+  |                             |                      |
+  |                             V                      |
+  |                      Receive Sensor Data           |
+  |                             |                      |
+  |                             V                      |
+  |                      Analyze Data for Accident     |
+  |                             |                      |
+  |                  Accident Detected? (Yes/No)       |
+  |                             |                      |
+  |                             V                      |
+  |                            Yes                     |
+  |                             |                      |
+  |                             V                      |
+  |                      Notify Notification Task      |
+  |                             |                      |
+  |                             V                      |
+  |                      [Notification Task]           |
+  |                             |                      |
+  |                             V                      |
+  |                      Retrieve GPS Data             |
+  |                             |                      |
+  |                             V                      |
+  |                      Send Data to ThingSpeak        |
+  |                             |                      |
+  |                             V                      |
+  |                      Send SMS Notification         |
+  |                             |                      |
+  |                             V                      |
+  +-----------------------------+                      |
+  |                                                    |
+  V                                                    |
+[GPS Task] ---> Read GPS Data                          |
+  |                             |                      |
+  |                             V                      |
+  |                      Send Data to GPS Queue        |
+  |                                                    |
+  +----------------------------------------------------+
+  |
+  V
+End
