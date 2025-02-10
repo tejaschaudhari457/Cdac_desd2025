@@ -1,4 +1,4 @@
-//simple code 
+//simple code bare-metal approach 
 
 
 #include <Wire.h>
